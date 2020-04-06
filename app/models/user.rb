@@ -29,4 +29,16 @@ class User < ApplicationRecord
   def following?(other_user)
     self.followings.include?(other_user)
   end
+
+  def self.search(search,search_method)
+    if search_method == '前方一致'
+        self.where(['name LIKE ?', "#{search}%"])
+      elsif search_method == '後方一致'
+        self.where(['name LIKE ?', "%#{search}"])
+      elsif search_method == '完全一致'
+        self.where(['name LIKE ?', "#{search}"])
+      else search_method == '部分一致'
+        self.where(['name LIKE ?', "%#{search}%"])
+    end
+  end
 end

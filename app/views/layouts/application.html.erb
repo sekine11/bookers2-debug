@@ -39,8 +39,21 @@
     <!--ヘッダーの記述-->
     <div class="container">
       <p id="notice"><%= notice %></p> <!--デバイスでnotice設定されているので呼び出してるだけ-->
-
     </div>
+    
+    <div class="container">
+      <div class="row text-center">
+        <% if user_signed_in? %>
+          <%= form_tag search_path, class: "", method: 'get' do %>
+            <%= text_field_tag :search %>
+            <%= select_tag :search_select, options_for_select([['User', 'User'], ['Book', 'Book']]) %>
+            <%= select_tag :search_method, options_for_select([['前方一致', '前方一致'], ['後方一致', '後方一致'], ['完全一致', '完全一致'], ['部分一致', '部分一致']]) %>
+            <%= submit_tag 'Search' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
     <%= yield %>
   </body>
 </html>
