@@ -1,0 +1,11 @@
+						<tr>
+						<td><%= comment.user.name %></td>
+						<td><%= comment.content %></td>
+						<td>
+						<% if comment.user == current_user %>
+						<%= link_to book_comment_path(comment.id), method: :delete, remote: true do %>
+						削除
+						<% end %>
+						<% end %>
+						</td>
+					</tr>
