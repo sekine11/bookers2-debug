@@ -1,1 +1,1 @@
-$("#comment").html("<%= j(render partial: "books/comments") %>");
+$("#comments_<%= @book.id %>").html("<%= j(render 'books/comments', comments: @book.book_comments ) %>");

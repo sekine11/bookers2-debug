@@ -1,1 +1,5 @@
-$("#favorite").html("<%= j(render partial: "books/favorite") %>");
+if (location.pathname == '/books') {
+  $(".book_<%= @book.id %>").html("<%= j(render 'books/favorite_index',  book: @book ) %>")
+} else {
+$(".book_<%= @book.id %>").html("<%= j(render 'books/favorite_show',  book: @book ) %>")
+}
