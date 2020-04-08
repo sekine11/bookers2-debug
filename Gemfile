@@ -77,3 +77,6 @@ gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'font-awesome-sass', '~> 5.4.1'
 gem "font-awesome-rails"
+gem 'jp_prefecture'
+gem "geocoder"
+gem 'dotenv-rails'

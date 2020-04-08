@@ -44,5 +44,33 @@
 
 </div>
 
+<% if current_user == @user %>
+<div class="col-xs-12">
+	<h2>Your MAP</h2>
+<div id='map'></div>
+<% end %>
+
+<style>
+#map{
+  height: 400px;
+}
+</style>
+
+<script>
+function initMap(){
+  // geocoderを初期化
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+  center: {lat: <%= @user_location[0] %>, lng: <%= @user_location[1] %>},
+  zoom: 8
+  });
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>
+
+</div>
+
 </div>
 </div>
