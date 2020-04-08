@@ -57,6 +57,7 @@
 </style>
 
 <script>
+
 function initMap(){
   // geocoderを初期化
   geocoder = new google.maps.Geocoder()
@@ -65,7 +66,7 @@ function initMap(){
   center: {lat: <%= @user_location[0] %>, lng: <%= @user_location[1] %>},
   zoom: 8
   });
-}
+};
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>
