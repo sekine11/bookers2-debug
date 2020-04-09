@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {       # ← 恐らく最初は”devise_for:”のみの記載かと
+    registrations: "users/registrations"
+  }
 
   resources :users,only: [:show,:index,:edit,:update]
 
@@ -17,5 +19,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
 
   get "/search" => "search#search", as: "search"
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
 end

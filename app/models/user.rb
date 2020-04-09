@@ -10,10 +10,16 @@ class User < ApplicationRecord
   validates :address_street, presence: true
   validates :address_building, presence: true
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+ 
+  after_create :send_welcome_mail
+ 
+  def send_welcome_mail
+    UserMailer.user_welcome_mail(self).deliver
+  end
+
+  
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
