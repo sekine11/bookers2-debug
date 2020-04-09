@@ -12,8 +12,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
-    resource.skip_confirmation!
+  @user = User.new(sign_up_params)
+    @user.skip_confirmation!
+    @user.save
   end
 
   # GET /resource/edit

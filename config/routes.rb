@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {       # ← 恐らく最初は”devise_for:”のみの記載かと
-    registrations: "users/registrations"
-  }
+  devise_for :users, controllers: { registrations: "users/registrations" }
 
   resources :users,only: [:show,:index,:edit,:update]
 
